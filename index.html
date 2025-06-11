@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Green Miles</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Asta+Sans:wght@300..800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <h1 class="asta-sans-medium">Green Miles</h1>
+                    </div>
+                    
+                    <nav class="navigation">
+                        <ul class="nav-menu">
+                            <li><a href="#" class="nav-link asta-sans-medium">Features</a></li>
+                            <li><a href="#" class="nav-link asta-sans-medium">FAQ</a></li>
+                            <li><a href="#" class="nav-link asta-sans-medium">Team</a></li>
+                            <li><a href="#" class="nav-link asta-sans-medium">Contact</a></li>
+                            <button class="preregister-btn asta-sans-medium" onclick="openModal()">Pre-Register</button>
+                        </ul>
+                    </nav>
+
+                     <button class="hamburger" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars" id="hamburger-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+         <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+            <div class="mobile-menu-content">
+                <nav class="mobile-nav">
+                    <ul class="mobile-nav-menu">
+                        <li><a href="#" class="nav-link asta-sans-medium" onclick="closeMobileMenu()">Features</a></li>
+                        <li><a href="#" class="nav-link asta-sans-medium" onclick="closeMobileMenu()">FAQ</a></li>
+                        <li><a href="#" class="nav-link asta-sans-medium" onclick="closeMobileMenu()">Team</a></li>
+                        <li><a href="#" class="nav-link asta-sans-medium" onclick="closeMobileMenu()">Contact</a></li>
+                        <button class="mobile-preregister-btn asta-sans-medium" onclick="openModal(); closeMobileMenu();">Pre-Register</button>
+                    </ul>
+                </nav>
+            </div>
+            
+            <!-- use it maybe later ?? -->
+            <!-- <div class="mobile-footer">
+                <div class="mobile-footer-content">
+                    <p class="asta-sans-regular">hallole</p>
+                </div>
+            </div> -->
+
+        </div>
+
+        <div class="main-content">
+            <div class="hero-section">
+                <div class="animated-logo">
+                    <div class="line line1"></div>
+                    <div class="line line2"></div>
+                    <div class="dot"></div>
+                </div>
+                <div class="journey">
+                    <div class="description asta-sans-medium">
+                        A sustainability-driven<br>app, that turns miles into meaning.
+                    </div>
+                </div>
+            </div>
+
+            <!-- features -->
+            <section class="features-section" id="features">
+                <div class="container">
+                     
+                    <div class="features-row">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3 class="feature-title asta-sans-medium">Individual Carbon Tracking</h3>
+                            <p class="feature-description asta-sans-regular">Monitor your emissions in real time and see how your choices shape a cleaner world</p>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <h3 class="feature-title asta-sans-medium">Gamified Rewards System</h3>
+                            <p class="feature-description asta-sans-regular">Level up with quests, leaderboards, and community challenges</p>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <h3 class="feature-title asta-sans-medium">Discover Low-Impact Living</h3>
+                            <p class="feature-description asta-sans-regular">Find paths away from traffic, small daily shifts can make a big difference over time</p>
+                        </div>
+                    </div>
+
+                    
+                    <div class="center-message">
+                        <h2 class="center-title asta-sans-medium">Get points every time you travel sustainably.</h2>
+                        <p class="center-subtitle asta-sans-regular">Make your daily moves matter even more!</p>
+                    </div>
+
+                    
+                    <div class="features-row">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-hourglass-half"></i>
+                            </div>
+                            <h3 class="feature-title asta-sans-medium">Limited Time Event Collectibles</h3>
+                            <p class="feature-description asta-sans-regular">Earn exclusive digital badges and physical merchandise linked to events you travel sustainably to.</p>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-percentage"></i>
+                            </div>
+                            <h3 class="feature-title asta-sans-medium">Fuel Your Day with Discounts</h3>
+                            <p class="feature-description asta-sans-regular">Trade your eco points for discounts on groceries, cafés, or daily essentials.</p>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <h3 class="feature-title asta-sans-medium">Seasonal Reward Drops</h3>
+                            <p class="feature-description asta-sans-regular">Collect special rewards based on seasons, holidays, or cultural events.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ u -->
+            <section class="faq-section" id="faq">
+                <div class="container">
+                    <div class="section-header">
+                        <!-- <span class="faq-label asta-sans-regular">FAQs</span> -->
+                        <h2 class="section-title asta-sans-medium">Got questions?<br>Here's the answers.</h2>
+                    </div>
+                    
+                    <div class="faq-items">
+                        <div class="faq-item">
+                            <button class="faq-question asta-sans-medium" onclick="toggleFAQ(this)">
+                                <span>How does Green Miles track my sustainable travel?</span>
+                                <i class="fas fa-chevron-down faq-arrow"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p class="asta-sans-regular">Green Miles uses GPS tracking and transport mode detection to automatically recognize when you're walking, cycling, using public transport, or carpooling. You earn points for each sustainable mile traveled, with bonus multipliers for longer journeys and consistent eco-friendly choices.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question asta-sans-medium" onclick="toggleFAQ(this)">
+                                <span>What rewards can I earn with my points?</span>
+                                <i class="fas fa-chevron-down faq-arrow"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p class="asta-sans-regular">Trade your points for discounts at local cafés, grocery stores, and eco-friendly retailers. Collect limited-time digital badges, unlock exclusive merchandise, and participate in seasonal reward drops tied to holidays and cultural events.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question asta-sans-medium" onclick="toggleFAQ(this)">
+                                <span>Is my location data secure and private?</span>
+                                <i class="fas fa-chevron-down faq-arrow"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p class="asta-sans-regular">Go fuck yourself.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question asta-sans-medium" onclick="toggleFAQ(this)">
+                                <span>How accurate is the carbon footprint tracking?</span>
+                                <i class="fas fa-chevron-down faq-arrow"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p class="asta-sans-regular">Our carbon calculations are based on scientifically validated emission factors from environmental agencies. We account for different transport modes, distance traveled, and regional energy sources to provide accurate real-time carbon impact measurements.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question asta-sans-medium" onclick="toggleFAQ(this)">
+                                <span>Can I compete with friends and family?</span>
+                                <i class="fas fa-chevron-down faq-arrow"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p class="asta-sans-regular">Yes! Create private groups with friends and family, join community challenges, and climb the leaderboards. Participate in monthly sustainability quests and special events to earn exclusive rewards together.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question asta-sans-medium" onclick="toggleFAQ(this)">
+                                <span>Is Green Miles available worldwide?</span>
+                                <i class="fas fa-chevron-down faq-arrow"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p class="asta-sans-regular">Green Miles is currently available in major cities across North America and Europe, with plans to expand globally. Reward partnerships vary by location, but core tracking and gamification features work anywhere you travel.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- teamington -->
+            <section class="team-wrapper" id="team">
+                 <div class="section-header">
+                        <h2 class="section-title asta-sans-medium" style="margin-bottom: 0.5rem;">Meet the Team</h2>
+                        <p class="contact-description asta-sans-regular">The brains behind it all!</p>
+                </div>
+                <div class="team-section" id="team-scroller">
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="https://i.pinimg.com/736x/17/16/18/1716185bdd04935aff35b9d031e3a752.jpg" alt="Team member photo">
+                        </div>
+                        <div class="team-details">
+                            <p class="team-name">nasir</p>
+                            <p class="team-role">part-time elden ring boss</p>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="https://i.pinimg.com/736x/e9/c5/98/e9c598c6822505362f01dd227738bf8f.jpg" alt="Team member photo">
+                        </div>
+                        <div class="team-details">
+                            <p class="team-name">saanviya</p>
+                            <p class="team-role">loves to design all the time</p>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="https://i.pinimg.com/736x/a0/3b/25/a03b2582a7489f76e332c5495ab4f903.jpg" alt="Team member photo">
+                        </div>
+                        <div class="team-details">
+                            <p class="team-name">himanshu</p>
+                            <p class="team-role">gujarati</p>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="https://i.pinimg.com/736x/2f/49/2b/2f492bfcac15ab2d49bfe3fd0b66cbbd.jpg" alt="Team member photo">
+                        </div>
+                        <div class="team-details">
+                            <p class="team-name">akshvin</p>
+                            <p class="team-role">ex-president of sri lanka</p>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="https://i.pinimg.com/736x/88/f1/c0/88f1c0f1621bff4075d3b153209a6314.jpg" alt="Team member photo">
+                        </div>
+                        <div class="team-details">
+                            <p class="team-name">anousha</p>
+                            <p class="team-role">top 100 pubg player</p>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="https://i.pinimg.com/736x/d5/10/c8/d510c84aface4c9201e1a5e8ccda7a8e.jpg" alt="Team member photo">
+                        </div>
+                        <div class="team-details">
+                            <p class="team-name">sohail</p>
+                            <p class="team-role">gurt</p>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="https://i.pinimg.com/736x/17/16/18/1716185bdd04935aff35b9d031e3a752.jpg" alt="Team member photo">
+                        </div>
+                        <div class="team-details">
+                            <p class="team-name">nasir</p>
+                            <p class="team-role">part-time elden ring boss</p>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="https://i.pinimg.com/736x/e9/c5/98/e9c598c6822505362f01dd227738bf8f.jpg" alt="Team member photo">
+                        </div>
+                        <div class="team-details">
+                            <p class="team-name">saanviya</p>
+                            <p class="team-role">loves to design all the time</p>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="https://i.pinimg.com/736x/a0/3b/25/a03b2582a7489f76e332c5495ab4f903.jpg" alt="Team member photo">
+                        </div>
+                        <div class="team-details">
+                            <p class="team-name">himanshu</p>
+                            <p class="team-role">gujarati</p>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="https://i.pinimg.com/736x/2f/49/2b/2f492bfcac15ab2d49bfe3fd0b66cbbd.jpg" alt="Team member photo">
+                        </div>
+                        <div class="team-details">
+                            <p class="team-name">akshvin</p>
+                            <p class="team-role">ex-president of sri lanka</p>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="https://i.pinimg.com/736x/88/f1/c0/88f1c0f1621bff4075d3b153209a6314.jpg" alt="Team member photo">
+                        </div>
+                        <div class="team-details">
+                            <p class="team-name">anousha</p>
+                            <p class="team-role">top 100 pubg player</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- pre-register secshun -->
+                <section class="preregister-section" id="prereg">
+                    <div class="container">
+                        <div class="preregister-content">
+                            <h2 class="section-title asta-sans-medium" style="margin-bottom: 1rem;">Ready to start your green journey?</h2>
+                            <p class="preregister-description asta-sans-regular">Join our community and be one the first to know when Green Miles launches!</p>
+                            <button class="preregister-btn asta-sans-medium" onclick="openModal()">Pre-Register</button>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+                    <div class="modal-container" onclick="event.stopPropagation()">
+                        <button class="close-btn" onclick="closeModal()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        
+                        <div class="modal-content">
+                            <h2 class="modal-title asta-sans-medium">Pre-Register</h2>
+                            <p class="modal-subtitle asta-sans-regular">Join our waitlist and be the first to experience Green Miles.</p>
+                            
+                            <form class="modal-form" id="preregisterForm">
+                                <div class="form-group">
+                                    <label class="form-label asta-sans-regular">Name</label>
+                                    <input type="text" class="form-input" id="fullName" placeholder="Enter your first name">
+                                    <span class="error-message" id="fullNameError"></span>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label asta-sans-regular">Email</label>
+                                    <input type="email" class="form-input" id="email" placeholder="Enter your email address">
+                                    <span class="error-message" id="emailError"></span>
+                                </div>
+                                
+                                <div class="modal-buttons">
+                                    <button type="button" class="cancel-btn asta-sans-medium" onclick="closeModal()">Cancel</button>
+                                    <button type="submit" class="save-btn asta-sans-medium">Join Waitlist</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- contact section -->
+            <section class="contact-section">
+                <div class="section-header">
+                    <h2 class="section-title asta-sans-medium">Contact Us</h2>
+                    <p class="contact-description asta-sans-regular">Drop us a mail and we'll get back to you!</p>
+                </div>
+                <div class="contact-container" id="contact">
+                    <div class="contact-desktop">
+                        <div class="contact-left">
+                            <div class="contact-logo">
+                                <div class="contact-line contact-line1"></div>
+                                <div class="contact-line contact-line2"></div>
+                                <div class="contact-dot"></div>
+                            </div>
+                            <div class="contact-info">
+                                <p class="contact-email asta-sans-medium">greenmilesofficial@gmail.com</p>
+                                <p class="contact-location asta-sans-regular">Dubai, Dubai Internet City</p>
+                                <div class="contact-social">
+                                    <a href="https://www.linkedin.com/company/green-milesoffical/" target="_blank" class="social-btn linkedin-btn" aria-label="LinkedIn">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                    <a href="https://www.instagram.com/greenmilesoffical/" class="social-btn instagram-btn" target="_blank" aria-label="Instagram">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-right">
+                            <form class="contact-form" id="contactForm">
+                                <div class="contact-form-group">
+                                    <input type="text" class="contact-form-input" id="contactFullName" placeholder="Full Name">
+                                </div>
+                                
+                                <div class="contact-form-group">     
+                                    <input type="email" class="contact-form-input" id="contactEmail" placeholder="Email">
+                                </div>
+                                
+                                <div class="contact-form-group">
+                                    <input type="text" class="contact-form-input" id="contactTitle" placeholder="Title">
+                                </div>
+                                
+                                <div class="contact-form-group contact-message-group">
+                                    <textarea class="contact-form-textarea" id="contactMessage" rows="4" placeholder="Message"></textarea>
+                                </div>
+                                
+                                <button type="submit" class="contact-send-btn">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Contact Layout Saar -->
+                    <div class="contact-mobile">
+                        <div class="contact-mobile-header">
+                            <div class="contact-logo">
+                                <div class="contact-line contact-line1"></div>
+                                <div class="contact-line contact-line2"></div>
+                                <div class="contact-dot"></div>
+                            </div>
+                        </div>
+                        
+                        <form class="contact-form contact-mobile-form" id="contactFormMobile">
+                            <div class="contact-form-group">
+                                
+                                <input type="text" class="contact-form-input" id="contactFullNameMobile" placeholder="Full Name">
+                            </div>
+                            
+                            <div class="contact-form-group">
+                                <input type="email" class="contact-form-input" id="contactEmailMobile" placeholder="Email">
+                            </div>
+                            
+                            <div class="contact-form-group">
+                                <input type="text" class="contact-form-input" id="contactTitleMobile" placeholder="Title">
+                            </div>
+                            
+                            <div class="contact-form-group contact-message-group">
+                                <textarea class="contact-form-textarea" id="contactMessageMobile" rows="6" placeholder="Message"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="contact-send-btn">
+                                Send
+                            </button>
+                        </form>
+                        
+                        <div class="contact-mobile-info">
+                            <p class="contact-email asta-sans-medium">greenmilesofficial@gmail.com</p>
+                            <p class="contact-location asta-sans-regular">Dubai, Dubai Internet City</p>
+                            <div class="contact-social">
+                                <a href="https://www.linkedin.com/company/green-milesoffical/" target="_blank" class="social-btn linkedin-btn" aria-label="LinkedIn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://www.instagram.com/greenmilesoffical/" class="social-btn instagram-btn" target="_blank" aria-label="Instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+        </div>
+
+        <script src="main.js"></script>
+    </body>
+</html>
