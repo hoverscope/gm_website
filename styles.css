@@ -312,7 +312,7 @@ html.menu-open{
 
 /* Mission Section Styles */
 .mission-section {
-    background-color: #ffffff;
+    background-color: transparent;
     padding: 0;
     position: relative;
     overflow: hidden;
@@ -328,7 +328,7 @@ html.menu-open{
 }
 
 .mission-visual {
-    background: #f8f9fa;
+    background: transparent;
     margin-right: 15%;
     height: 100%;
     position: relative;
@@ -388,7 +388,7 @@ html.menu-open{
 
 .mission-content {
     padding: 2rem 4rem;
-    background-color: #f8f9fa;
+    background-color: transparent;
     display: flex;
     flex-direction: column;
     justify-content: center;
