@@ -237,15 +237,17 @@ container.addEventListener('scroll', () => {
 function initScrollAnimations() {
     const featuresSection = document.querySelector('.features-section');
     const faqSection = document.querySelector('.faq-section');
-    const teamWrapper = document.querySelector('.team-wrapper');
+    const teamWrapper = document.querySelector('.team-section');
     const preregister = document.querySelector('.preregister-section');
     const contact = document.querySelector('.contact-section');
+    const mission = document.querySelector('.mission-section');
     
     if (featuresSection) featuresSection.classList.add('scroll-animate');
     if (faqSection) faqSection.classList.add('scroll-animate');
     if (teamWrapper) teamWrapper.classList.add('scroll-animate');
     if (preregister) preregister.classList.add('scroll-animate');
     if (contact) contact.classList.add('scroll-animate');
+    if (mission) mission.classList.add('scroll-animate');
     
     const animateElements = document.querySelectorAll('.scroll-animate, .feature-item, .center-message, .section-header, .faq-item, .team-section');
     
