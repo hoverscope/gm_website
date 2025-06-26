@@ -75,7 +75,7 @@ html.menu-open{
 
 .header-content {
     display: grid;
-    grid-template-columns: 4fr 3fr;
+    grid-template-columns: 4fr 4fr;
     gap: 2rem;
     height: 100%;
 }
@@ -233,7 +233,7 @@ html.menu-open{
 
 
 .main-content {
-    padding: 4rem 1rem;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -310,6 +310,284 @@ html.menu-open{
     justify-content: center; 
 }
 
+/* Mission Section Styles */
+.mission-section {
+    background-color: #ffffff;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.mission-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    min-height: 100vh;
+    align-items: center;
+}
+
+.mission-visual {
+    background: #f8f9fa;
+    margin-right: 15%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.visual-element {
+    bottom: -10px;
+    width: 300px;
+    height: 300px;
+    position: relative;
+}
+
+.circle-1 {
+    width: 300px;
+    height: 300px;
+    border: 2px solid #000;
+    border-radius: 50%;
+    position: absolute;
+    animation: rotate 20s linear infinite;
+}
+
+.circle-2 {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #666;
+    border-radius: 50%;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    animation: rotate 15s linear infinite reverse;
+}
+
+.circle-3 {
+    width: 100px;
+    height: 100px;
+    background-color: #000;
+    border-radius: 50%;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.mission-content {
+    padding: 2rem 4rem;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 70%;
+}
+
+.mission-badge {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background-color: #000;
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    border-radius: 2px;
+    width: fit-content;
+}
+
+.mission-title {
+    font-size: 4rem;
+    font-weight: 300;
+    color: #000;
+    line-height: 1;
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+}
+
+.mission-title .highlight {
+    font-weight: 700;
+    position: relative;
+}
+
+.mission-description {
+    font-size: 1.1rem;
+    color: #4a4a4a;
+    line-height: 1.8;
+    font-weight: 400;
+}
+
+.mission-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #000;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .mission-container {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .mission-visual {
+        height: 60vh;
+        order: 2;
+    }
+
+    .mission-content {
+        padding: 6rem 3rem;
+        order: 1;
+    }
+
+    .mission-title {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .mission-content {
+        padding: 4rem 2rem;
+    }
+
+    .mission-title {
+        font-size: 2.8rem;
+        margin-bottom: 2rem;
+    }
+
+    .mission-description {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+
+    .mission-stats {
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+
+    .mission-cta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .visual-element {
+        width: 200px;
+        height: 200px;
+    }
+
+    .circle-1 {
+        width: 200px;
+        height: 200px;
+    }
+
+    .circle-2 {
+        width: 130px;
+        height: 130px;
+        top: 35px;
+        left: 35px;
+    }
+
+    .circle-3 {
+        width: 60px;
+        height: 60px;
+        top: 70px;
+        left: 70px;
+    }
+}
+
+@media (max-width: 480px) {
+    .mission-content {
+        padding: 3rem 1.5rem;
+    }
+
+    .mission-title {
+        font-size: 2.2rem;
+    }
+
+    .mission-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .mission-visual {
+        height: 50vh;
+    }
+}
+
+/* Scroll animations */
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Scroll Animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.show, .glow-on-scroll.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2.4rem;
+    }
+
+    .section-subtitle {
+        font-size: 1.1rem;
+    }
+}
+
 .features-section {
     padding: 2rem 2rem;
     width: 97%;
@@ -331,6 +609,7 @@ html.menu-open{
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 2rem;
     gap: 1.5rem;
     opacity: 0;
     transform: translateY(40px);
@@ -371,9 +650,11 @@ html.menu-open{
 }
 
 .center-message {
+    background-color: #212529;
+    max-width: 100%;
     text-align: center;
-    padding: 4rem 0;
-    margin: 4rem 0;
+    padding: 3rem 0;
+    margin: 1rem 0;
     opacity: 0;
     transform: translateY(50px);
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -381,15 +662,15 @@ html.menu-open{
 }
 
 .center-title {
-    font-size: 3rem;
-    color: #212529;
+    font-size: 2.7rem;
+    color: white;
     margin-bottom: 1rem;
     line-height: 1.2;
 }
 
 .center-subtitle {
-    font-size: 1.2rem;
-    color: #6c757d;
+    font-size: 1.1rem;
+    color: rgb(208, 206, 206);
     line-height: 1.4;
 }
 
@@ -397,7 +678,6 @@ html.menu-open{
     padding: 4rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
-
 }
 
 .section-header {
@@ -538,8 +818,8 @@ html.menu-open{
 
 .team-card {
     flex: 0 0 auto;
-    width: 350px;
-    height: 390px;
+    width: 320px;
+    height: 350px;
     margin: 1rem;
     background: #2d2d2d;
     color: white;
@@ -550,11 +830,11 @@ html.menu-open{
     user-select: none;
     display: flex;
     flex-direction: column;
-    padding: 15px;
+    padding: 20px;
     overflow-y: hidden;
 }
 
- .team-image {
+.team-image {
     height: 80%;
     width: 100%;
     border-radius: 10px;
@@ -564,7 +844,7 @@ html.menu-open{
 .team-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
     border-radius: 10px;
 }
 
@@ -581,8 +861,6 @@ html.menu-open{
     margin-top: -5px;
     color: #6c757d;
 }
-
-
 
 .scroll-animate {
     opacity: 0;
@@ -828,6 +1106,7 @@ html.menu-open{
     background-color: #2d2d2d;
     width: 75%;
     box-shadow: 5px 5px 5px #9c9c9c;
+    border-radius: 10px;
 }
 
 .contact-desktop {
@@ -837,7 +1116,6 @@ html.menu-open{
     align-items: center;
     height: 100%;
     min-height: 500px;
-
 }
 
 .contact-mobile {
@@ -857,7 +1135,7 @@ html.menu-open{
     align-items: flex-end;
     gap: 20px;
     margin-bottom: auto;
-    margin-top: 20px;
+    margin-top: 45px;
     margin-left: 25px;
     margin-right: auto;
 }
