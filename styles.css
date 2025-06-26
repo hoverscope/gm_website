@@ -81,7 +81,7 @@ html.menu-open{
 }
 
 .logo, .navigation {
-    color: #000;
+    color: #212529;
     border-top: 1px solid #2d2d2d;
 }
 
@@ -398,7 +398,7 @@ html.menu-open{
 .mission-badge {
     display: inline-block;
     padding: 0.5rem 1.5rem;
-    background-color: #000;
+    background-color: #212529;
     color: #f8f8f8;
     font-size: 0.85rem;
     font-weight: 600;
@@ -412,7 +412,7 @@ html.menu-open{
 .mission-title {
     font-size: 4rem;
     font-weight: 300;
-    color: #000;
+    color: #212529;
     line-height: 1;
     margin-bottom: 2rem;
     letter-spacing: -0.02em;
@@ -428,33 +428,6 @@ html.menu-open{
     color: #4a4a4a;
     line-height: 1.8;
     font-weight: 400;
-}
-
-.mission-stats {
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
-    margin-bottom: 2rem;
-}
-
-.stat-item {
-    text-align: center;
-}
-
-.stat-number {
-    font-size: 2rem;
-    font-weight: 800;
-    color: #000;
-    line-height: 1;
-    margin-bottom: 0.5rem;
-}
-
-.stat-label {
-    font-size: 0.8rem;
-    color: #666;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-weight: 500;
 }
 
 /* Responsive Design */
@@ -494,21 +467,6 @@ html.menu-open{
         margin-bottom: 2rem;
     }
 
-    .mission-stats {
-        gap: 2rem;
-        margin-bottom: 2rem;
-    }
-
-    .stat-number {
-        font-size: 2rem;
-    }
-
-    .mission-cta {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-    }
-
     .visual-element {
         width: 200px;
         height: 200px;
@@ -541,11 +499,6 @@ html.menu-open{
 
     .mission-title {
         font-size: 2.2rem;
-    }
-
-    .mission-stats {
-        flex-direction: column;
-        gap: 1.5rem;
     }
 
     .mission-visual {
