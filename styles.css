@@ -388,7 +388,7 @@ html.menu-open{
 
 .mission-content {
     padding: 2rem 4rem;
-    background-color: #ffffff;
+    background-color: #f8f9fa;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -399,7 +399,7 @@ html.menu-open{
     display: inline-block;
     padding: 0.5rem 1.5rem;
     background-color: #000;
-    color: #fff;
+    color: #f8f8f8;
     font-size: 0.85rem;
     font-weight: 600;
     letter-spacing: 0.1em;
