@@ -128,172 +128,75 @@ document.getElementById('contactFormMobile')?.addEventListener('submit', functio
     this.reset();
 });
 
-let autoScrollInterval;
-let userInteracting = false;
-let lastUserInteraction = 0;
-const AUTO_SCROLL_SPEED = 0.75;
-const PAUSE_AFTER_INTERACTION = 1000;
+// Interactive navigation dots
+const dots = document.querySelectorAll('.nav-dot');
+const container = document.getElementById('teamContainer');
+const members = document.querySelectorAll('.team-member');
 
-function startAutoScroll() {
-  if (autoScrollInterval) return;
-  
-  autoScrollInterval = setInterval(() => {
-    if (!userInteracting && Date.now() - lastUserInteraction > PAUSE_AFTER_INTERACTION) {
-      scroller.scrollLeft += AUTO_SCROLL_SPEED;
-    }
-  }, 16);
-}
-
-function stopAutoScroll() {
-  if (autoScrollInterval) {
-    clearInterval(autoScrollInterval);
-    autoScrollInterval = null;
-  }
-}
-
-const scroller = document.getElementById("team-scroller");
-
-function cloneCards(times = 3) {
-  const originalCards = Array.from(scroller.children);
-  
-  for (let i = 0; i < times; i++) {
-    originalCards.forEach(card => {
-      const cloneRight = card.cloneNode(true);
-      scroller.appendChild(cloneRight);
+dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        dots.forEach(d => d.classList.remove('active'));
+        dot.classList.add('active');
+        
+        const memberWidth = members[0].offsetWidth + 20;
+        container.scrollTo({
+            left: memberWidth * index,
+            behavior: 'smooth'
+        });
     });
-  }
-  
-  for (let i = 0; i < times; i++) {
-    [...originalCards].reverse().forEach(card => {
-      const cloneLeft = card.cloneNode(true);
-      scroller.insertBefore(cloneLeft, scroller.firstChild);
+});
+
+// Update active dot on scroll
+container.addEventListener('scroll', () => {
+    const scrollLeft = container.scrollLeft;
+    const memberWidth = members[0].offsetWidth + 20;
+    const activeIndex = Math.round(scrollLeft / memberWidth);
+    
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === activeIndex);
     });
-  }
-}
-
-cloneCards();
-
-window.onload = () => {
-  const originalWidth = scroller.scrollWidth / 7;
-  scroller.scrollLeft = originalWidth * 3;
-  setTimeout(startAutoScroll, 1000);
-};
-
-scroller.addEventListener("scroll", () => {
-  const scrollLeft = scroller.scrollLeft;
-  const maxScroll = scroller.scrollWidth - scroller.clientWidth;
-  const originalWidth = scroller.scrollWidth / 7;
-  const resetThreshold = 50;
-
-  if (scrollLeft >= maxScroll - resetThreshold) {
-    scroller.scrollLeft = originalWidth * 3;
-  }
-  
-  if (scrollLeft <= resetThreshold) {
-    scroller.scrollLeft = originalWidth * 4;
-  }
 });
 
 let isDown = false;
 let startX;
-let scrollLeftStart;
+let scrollLeft;
 
-scroller.addEventListener('mousedown', (e) => {
-  userInteracting = true;
-  lastUserInteraction = Date.now();
-  stopAutoScroll();
-  
-  isDown = true;
-  scroller.style.cursor = 'grabbing';
-  startX = e.pageX - scroller.offsetLeft;
-  scrollLeftStart = scroller.scrollLeft;
+container.addEventListener('mousedown', (e) => {
+    isDown = true;
+    startX = e.pageX - container.offsetLeft;
+    scrollLeft = container.scrollLeft;
+    container.style.cursor = 'grabbing';
+    container.classList.add('dragging');
 });
 
-scroller.addEventListener('mouseup', () => {
-  isDown = false;
-  scroller.style.cursor = 'grab';
-  userInteracting = false;
-  lastUserInteraction = Date.now();
-  setTimeout(startAutoScroll, PAUSE_AFTER_INTERACTION);
+container.addEventListener('mouseup', () => {
+    isDown = false;
+    container.style.cursor = 'grab';
+    setTimeout(() => {
+        container.classList.remove('dragging');
+    }, 100);
 });
 
-scroller.addEventListener('mouseleave', () => {
-  isDown = false;
-  scroller.style.cursor = 'grab';
-  if (userInteracting) {
-    userInteracting = false;
-    lastUserInteraction = Date.now();
-    setTimeout(startAutoScroll, PAUSE_AFTER_INTERACTION);
-  }
+container.addEventListener('mouseleave', () => {
+    isDown = false;
+    container.style.cursor = 'grab';
 });
 
-scroller.addEventListener('mousemove', (e) => {
-  if (!isDown) return;
-  e.preventDefault();
-  const x = e.pageX - scroller.offsetLeft;
-  const walk = (startX - x) * 1.2;
-  scroller.scrollLeft = scrollLeftStart + walk;
+container.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - container.offsetLeft;
+    const walk = (x - startX) * 2;
+    container.scrollLeft = scrollLeft - walk;
 });
 
-let touchScrollTimeout;
-let lastScrollPosition = 0;
-let scrollVelocity = 0;
-
-scroller.addEventListener('touchstart', (e) => {
-  userInteracting = true;
-  lastUserInteraction = Date.now();
-  stopAutoScroll();
-  lastScrollPosition = scroller.scrollLeft;
-  
-
-  if (touchScrollTimeout) {
-    clearTimeout(touchScrollTimeout);
-  }
-}, { passive: true });
-
-scroller.addEventListener('scroll', (e) => {
-  if (userInteracting) {
-    lastUserInteraction = Date.now();
-    
-  
-    scrollVelocity = Math.abs(scroller.scrollLeft - lastScrollPosition);
-    lastScrollPosition = scroller.scrollLeft;
-    
-  
-    if (touchScrollTimeout) {
-      clearTimeout(touchScrollTimeout);
-    }
-    
-  
-    touchScrollTimeout = setTimeout(() => {
-      userInteracting = false;
-      lastUserInteraction = Date.now();
-      setTimeout(startAutoScroll, PAUSE_AFTER_INTERACTION);
+document.querySelectorAll('.linkedin-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.classList.add('clicked');
+    setTimeout(() => {
+      btn.classList.remove('clicked');
     }, 150);
-  }
-});
-
-scroller.addEventListener('touchend', (e) => {
-
-
-}, { passive: true });
-
-document.addEventListener('touchend', (e) => {
-
-  if (!scroller.contains(e.target)) {
-    if (touchScrollTimeout) {
-      clearTimeout(touchScrollTimeout);
-    }
-    touchScrollTimeout = setTimeout(() => {
-      userInteracting = false;
-      lastUserInteraction = Date.now();
-      setTimeout(startAutoScroll, PAUSE_AFTER_INTERACTION);
-    }, 300);
-  }
-}, { passive: true });
-
-scroller.addEventListener('contextmenu', (e) => {
-  e.preventDefault();
+  });
 });
 
 const observerOptions = {
@@ -306,12 +209,30 @@ const observer = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
         }
-        if (entry.isIntersecting) {
-        entry.target.classList.add('show');
-      }
     });
-    document.querySelectorAll('.fade-up').forEach(el => {observer.observe(el);});
 }, observerOptions);
+
+document.querySelectorAll('.scroll-animate').forEach(el => {
+    observer.observe(el);
+});
+
+let scrollTimeout;
+container.addEventListener('scroll', () => {
+    container.classList.add('scrolling');
+    clearTimeout(scrollTimeout);
+    
+    const scrollLeft = container.scrollLeft;
+    const memberWidth = members[0].offsetWidth + 20;
+    const activeIndex = Math.round(scrollLeft / memberWidth);
+    
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === activeIndex);
+    });
+    
+    scrollTimeout = setTimeout(() => {
+        container.classList.remove('scrolling');
+    }, 150);
+});
 
 function initScrollAnimations() {
     const featuresSection = document.querySelector('.features-section');
@@ -358,7 +279,7 @@ function initNavigation() {
                   targetSection = document.querySelector('.faq-section');
                   break;
               case 'team':
-                  targetSection = document.querySelector('.team-wrapper');
+                  targetSection = document.querySelector('.team-section');
                   break;
               case 'contact':
                   targetSection = document.querySelector('.contact-section');
