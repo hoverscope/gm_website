@@ -231,7 +231,6 @@ html.menu-open{
     margin: 0;
 }
 
-
 .main-content {
     padding: 1rem;
     display: flex;
@@ -400,12 +399,12 @@ html.menu-open{
     padding: 0.5rem 1.5rem;
     background-color: #212529;
     color: #f8f8f8;
-    font-size: 0.85rem;
+    font-size: 1.5rem;
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     margin-bottom: 2rem;
-    border-radius: 2px;
+    border-radius: 10px;
     width: fit-content;
 }
 
@@ -430,82 +429,6 @@ html.menu-open{
     font-weight: 400;
 }
 
-/* Responsive Design */
-@media (max-width: 900px) {
-    .mission-container {
-        grid-template-columns: 1fr;
-        min-height: auto;
-    }
-
-    .mission-visual {
-        height: 60vh;
-        order: 2;
-    }
-
-    .mission-content {
-        padding: 6rem 3rem;
-        order: 1;
-    }
-
-    .mission-title {
-        font-size: 3.5rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .mission-content {
-        padding: 4rem 2rem;
-    }
-
-    .mission-title {
-        font-size: 2.8rem;
-        margin-bottom: 2rem;
-    }
-
-    .mission-description {
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
-    }
-
-    .visual-element {
-        width: 200px;
-        height: 200px;
-    }
-
-    .circle-1 {
-        width: 200px;
-        height: 200px;
-    }
-
-    .circle-2 {
-        width: 130px;
-        height: 130px;
-        top: 35px;
-        left: 35px;
-    }
-
-    .circle-3 {
-        width: 60px;
-        height: 60px;
-        top: 70px;
-        left: 70px;
-    }
-}
-
-@media (max-width: 480px) {
-    .mission-content {
-        padding: 3rem 1.5rem;
-    }
-
-    .mission-title {
-        font-size: 2.2rem;
-    }
-
-    .mission-visual {
-        height: 50vh;
-    }
-}
-
 /* Scroll animations */
 .fade-up {
     opacity: 0;
@@ -528,17 +451,6 @@ html.menu-open{
 .fade-in.show, .glow-on-scroll.show {
     opacity: 1;
     transform: translateY(0);
-}
-
-/* Responsive tweaks */
-@media (max-width: 768px) {
-    .section-title {
-        font-size: 2.4rem;
-    }
-
-    .section-subtitle {
-        font-size: 1.1rem;
-    }
 }
 
 .features-section {
@@ -605,11 +517,12 @@ html.menu-open{
 
 .center-message {
     background-color: #212529;
+    border-radius: 25px;
     max-width: 100%;
     text-align: center;
     padding: 3rem 0;
-    margin: 1rem 0;
-    margin-bottom: 2rem;
+    margin: 1.5rem 0;
+    margin-bottom: 4rem;
     margin-top: 0;
     opacity: 0;
     transform: translateY(50px);
@@ -740,32 +653,14 @@ html.menu-open{
 
 .team-section {
     padding: 20px 10px;
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
+    overflow-y: auto;
 }
 
 .team-header {
     text-align: center;
     margin-bottom: 20px;
-}
-
-.team-title {
-    font-size: 3rem;
-    font-weight: 500;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
-    position: relative;
-}
-
-.team-title::after {
-    content: '';
-    width: 80px;
-    height: 2px;
-    background-color: #212529;
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
 }
 
 .team-subtitle {
@@ -909,11 +804,11 @@ html.menu-open{
     pointer-events: auto;
 }
 
-.linkedin-btn {
+.linkedin-btn, .team-linkedin-btn {
     width: 35px;
     height: 35px;
     border-radius: 50%;
-    background: #0077b5;
+    background: transparent;
     color: white;
     border: none;
     cursor: pointer;
@@ -926,12 +821,15 @@ html.menu-open{
     text-decoration: none;
 }
 
-.linkedin-btn:hover {
-    background: #005885;
-    transform: rotate(360deg) scale(1.1);
+.team-linkedin-btn { 
+    background: #2d2d2d;
 }
 
-.linkedin-btn.clicked {
+.team-linkedin-btn:hover {
+    background: #0077b5;
+}
+
+linkedin-btn.clicked {
     transform: scale(0.8);
 }
 
@@ -992,6 +890,52 @@ html.menu-open{
 }
 
 @media (max-width: 768px) {
+    .section-title {
+        font-size: 2.4rem;
+    }
+
+    .section-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .mission-content {
+        padding: 4rem 2rem;
+    }
+
+    .mission-title {
+        font-size: 2.8rem;
+        margin-bottom: 2rem;
+    }
+
+    .mission-description {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+
+    .visual-element {
+        width: 200px;
+        height: 200px;
+    }
+
+    .circle-1 {
+        width: 200px;
+        height: 200px;
+    }
+
+    .circle-2 {
+        width: 130px;
+        height: 130px;
+        top: 35px;
+        left: 35px;
+    }
+
+    .circle-3 {
+        width: 60px;
+        height: 60px;
+        top: 70px;
+        left: 70px;
+    }
+
     .team-title {
         font-size: 2.5rem;
     }
@@ -1002,23 +946,9 @@ html.menu-open{
     }
     
     .team-container {
-        gap: 15px;
+        gap: 20px;
     }
-}
 
-@media (max-width: 480px) {
-    .team-section {
-        padding: 60px 15px;
-    }
-    
-    .team-title {
-        font-size: 2rem;
-    }
-    
-    .team-member {
-        min-width: 220px;
-        height: 320px;
-    }
 }
 
 .scroll-animate {
@@ -1071,7 +1001,7 @@ html.menu-open{
 
 .preregister-btn:hover {
     background-color: transparent;
-    border: 1px solid #212529;
+    border-bottom: 1px solid #212529;
     color: #212529;
 }
 
@@ -1597,6 +1527,28 @@ html.menu-open{
         max-width: 100%;
     }
 
+    .mission-badge {
+        font-size: 1rem;
+    }
+
+    .mission-container {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .mission-visual {
+        height: 60vh;
+        order: 2;
+    }
+
+    .mission-content {
+        padding: 6rem 3rem;
+        order: 1;
+    }
+
+    .mission-title {
+        font-size: 3.5rem;
+    }
 
     .features-section {
         padding: 2rem 2rem;
@@ -1612,6 +1564,7 @@ html.menu-open{
     .center-message {
         padding: 3rem 0;
         margin: 3rem 0;
+       
     }
     
     .center-title {
@@ -1799,6 +1752,21 @@ html.menu-open{
         margin-bottom: -3px;
     }
 
+    .mission-content {
+        padding: 3rem 1.5rem;
+        text-align: center;
+        align-items: center;
+    }
+
+    .mission-title {
+        font-size: 2.2rem;
+    }
+
+    .mission-visual {
+        height: 40vh;
+        width: 100%;
+    }
+
      .contact-section {
         padding: 3rem 0;
     }
@@ -1834,6 +1802,19 @@ html.menu-open{
         width: 45px;
         height: 45px;
         font-size: 1.1rem;
+    }
+
+    .team-section {
+        padding: 60px 15px;
+    }
+    
+    .team-title {
+        font-size: 2rem;
+    }
+    
+    .team-member {
+        min-width: 220px;
+        height: 320px;
     }
 }
 
