@@ -128,77 +128,6 @@ document.getElementById('contactFormMobile')?.addEventListener('submit', functio
     this.reset();
 });
 
-// Interactive navigation dots
-const dots = document.querySelectorAll('.nav-dot');
-const container = document.getElementById('teamContainer');
-const members = document.querySelectorAll('.team-member');
-
-dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-        dots.forEach(d => d.classList.remove('active'));
-        dot.classList.add('active');
-        
-        const memberWidth = members[0].offsetWidth + 20;
-        container.scrollTo({
-            left: memberWidth * index,
-            behavior: 'smooth'
-        });
-    });
-});
-
-// Update active dot on scroll
-container.addEventListener('scroll', () => {
-    const scrollLeft = container.scrollLeft;
-    const memberWidth = members[0].offsetWidth + 20;
-    const activeIndex = Math.round(scrollLeft / memberWidth);
-    
-    dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === activeIndex);
-    });
-});
-
-let isDown = false;
-let startX;
-let scrollLeft;
-
-container.addEventListener('mousedown', (e) => {
-    isDown = true;
-    startX = e.pageX - container.offsetLeft;
-    scrollLeft = container.scrollLeft;
-    container.style.cursor = 'grabbing';
-    container.classList.add('dragging');
-});
-
-container.addEventListener('mouseup', () => {
-    isDown = false;
-    container.style.cursor = 'grab';
-    setTimeout(() => {
-        container.classList.remove('dragging');
-    }, 100);
-});
-
-container.addEventListener('mouseleave', () => {
-    isDown = false;
-    container.style.cursor = 'grab';
-});
-
-container.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - container.offsetLeft;
-    const walk = (x - startX) * 2;
-    container.scrollLeft = scrollLeft - walk;
-});
-
-document.querySelectorAll('.linkedin-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    btn.classList.add('clicked');
-    setTimeout(() => {
-      btn.classList.remove('clicked');
-    }, 150);
-  });
-});
-
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -216,28 +145,12 @@ document.querySelectorAll('.scroll-animate').forEach(el => {
     observer.observe(el);
 });
 
-let scrollTimeout;
-container.addEventListener('scroll', () => {
-    container.classList.add('scrolling');
-    clearTimeout(scrollTimeout);
-    
-    const scrollLeft = container.scrollLeft;
-    const memberWidth = members[0].offsetWidth + 20;
-    const activeIndex = Math.round(scrollLeft / memberWidth);
-    
-    dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === activeIndex);
-    });
-    
-    scrollTimeout = setTimeout(() => {
-        container.classList.remove('scrolling');
-    }, 150);
-});
 
 function initScrollAnimations() {
     const featuresSection = document.querySelector('.features-section');
     const faqSection = document.querySelector('.faq-section');
     const teamWrapper = document.querySelector('.team-section');
+    const team = document.querySelector('.team')
     const preregister = document.querySelector('.preregister-section');
     const contact = document.querySelector('.contact-section');
     const mission = document.querySelector('.mission-section');
@@ -245,11 +158,12 @@ function initScrollAnimations() {
     if (featuresSection) featuresSection.classList.add('scroll-animate');
     if (faqSection) faqSection.classList.add('scroll-animate');
     if (teamWrapper) teamWrapper.classList.add('scroll-animate');
+    if (team) teamWrapper.classList.add('scroll-animate');
     if (preregister) preregister.classList.add('scroll-animate');
     if (contact) contact.classList.add('scroll-animate');
     if (mission) mission.classList.add('scroll-animate');
     
-    const animateElements = document.querySelectorAll('.scroll-animate, .feature-item, .center-message, .section-header, .faq-item, .team-section');
+    const animateElements = document.querySelectorAll('.scroll-animate, .feature-item, .center-message, .section-header, .faq-item, .team-section, .team');
     
     animateElements.forEach(el => {
         observer.observe(el);
