@@ -97,7 +97,7 @@ document.getElementById('preregisterForm').addEventListener('submit', async func
             const result = await response.json();
             
             if (result.success) {
-                alert('Thank you for pre-registering! We\'ll be in touch soon. Check your email for confirmation.');
+                alert('Thank you for pre-registering! We\'ll be in touch soon. Check your email for confirmation!');
                 this.reset();
                 closeModal();
             } else {
