@@ -117,7 +117,6 @@ document.getElementById('preregisterForm').addEventListener('submit', async func
             
             // Reset button
             const submitBtn = this.querySelector('button[type="submit"]');
-            submitBtn.textContent = 'Submit';
             submitBtn.disabled = false;
         }
     }
@@ -147,8 +146,6 @@ document.getElementById('contactForm')?.addEventListener('submit', async functio
     try {
         // Show loading state
         const submitBtn = this.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
         
         const response = await fetch(`${API_BASE_URL}/api/contact`, {
@@ -173,7 +170,6 @@ document.getElementById('contactForm')?.addEventListener('submit', async functio
         }
         
         // Reset button
-        submitBtn.textContent = originalText;
         submitBtn.disabled = false;
         
     } catch (error) {
@@ -186,7 +182,6 @@ document.getElementById('contactForm')?.addEventListener('submit', async functio
         
         // Reset button
         const submitBtn = this.querySelector('button[type="submit"]');
-        submitBtn.textContent = 'Send Message';
         submitBtn.disabled = false;
     }
 });
@@ -210,7 +205,6 @@ document.getElementById('contactFormMobile')?.addEventListener('submit', async f
         // Show loading state
         const submitBtn = this.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
         
         const response = await fetch(`${API_BASE_URL}/api/contact`, {
@@ -234,8 +228,6 @@ document.getElementById('contactFormMobile')?.addEventListener('submit', async f
             alert('Error: ' + result.message);
         }
         
-        // Reset button
-        submitBtn.textContent = originalText;
         submitBtn.disabled = false;
         
     } catch (error) {
@@ -249,7 +241,6 @@ document.getElementById('contactFormMobile')?.addEventListener('submit', async f
         
         // Reset button
         const submitBtn = this.querySelector('button[type="submit"]');
-        submitBtn.textContent = 'Send Message';
         submitBtn.disabled = false;
     }
 });
