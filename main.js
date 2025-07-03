@@ -79,6 +79,7 @@ document.getElementById('preregisterForm').addEventListener('submit', async func
         try {
             // Show loading state
             const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch spinner-icon" style="width: 70%;"></i>';
             submitBtn.disabled = true;
             
             const response = await fetch(`${API_BASE_URL}/api/preregister`, {
@@ -104,6 +105,7 @@ document.getElementById('preregisterForm').addEventListener('submit', async func
             }
             
             // Reset button
+            submitBtn.innerHTML = 'Join Waitlist';
             submitBtn.disabled = false;
             
         } catch (error) {
@@ -117,6 +119,7 @@ document.getElementById('preregisterForm').addEventListener('submit', async func
             
             // Reset button
             const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.textContent = 'Join Waitlist';
             submitBtn.disabled = false;
         }
     }
@@ -146,6 +149,7 @@ document.getElementById('contactForm')?.addEventListener('submit', async functio
     try {
         // Show loading state
         const submitBtn = this.querySelector('button[type="submit"]');
+        submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch spinner-icon"></i>';
         submitBtn.disabled = true;
         
         const response = await fetch(`${API_BASE_URL}/api/contact`, {
@@ -170,6 +174,7 @@ document.getElementById('contactForm')?.addEventListener('submit', async functio
         }
         
         // Reset button
+        submitBtn.innerHTML = '<i class="fas fa-arrow-right"></i>';
         submitBtn.disabled = false;
         
     } catch (error) {
@@ -182,6 +187,7 @@ document.getElementById('contactForm')?.addEventListener('submit', async functio
         
         // Reset button
         const submitBtn = this.querySelector('button[type="submit"]');
+        submitBtn.innerHTML = '<i class="fas fa-arrow-right"></i>';
         submitBtn.disabled = false;
     }
 });
@@ -204,7 +210,7 @@ document.getElementById('contactFormMobile')?.addEventListener('submit', async f
     try {
         // Show loading state
         const submitBtn = this.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
+        submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch spinner-icon"></i>';
         submitBtn.disabled = true;
         
         const response = await fetch(`${API_BASE_URL}/api/contact`, {
@@ -228,6 +234,8 @@ document.getElementById('contactFormMobile')?.addEventListener('submit', async f
             alert('Error: ' + result.message);
         }
         
+        // Reset button
+        submitBtn.innerHTML = 'Send';
         submitBtn.disabled = false;
         
     } catch (error) {
@@ -241,6 +249,7 @@ document.getElementById('contactFormMobile')?.addEventListener('submit', async f
         
         // Reset button
         const submitBtn = this.querySelector('button[type="submit"]');
+        submitBtn.textContent = 'Send';
         submitBtn.disabled = false;
     }
 });

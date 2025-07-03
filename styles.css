@@ -1082,7 +1082,7 @@ linkedin-btn.clicked {
 
 .preregister-btn:hover {
     background-color: transparent;
-    border-bottom: 1px solid #212529;
+    border: 1px solid #212529;
     color: #212529;
 }
 
@@ -1532,6 +1532,16 @@ linkedin-btn.clicked {
 
 .team.visible {
     opacity: 1;
+}
+
+.spinner-icon {
+  animation: spin 1s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 
