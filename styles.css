@@ -1082,7 +1082,7 @@ linkedin-btn.clicked {
 
 .preregister-btn:hover {
     background-color: transparent;
-    border: 1px solid #212529;
+    border-bottom: 1px solid #212529;
     color: #212529;
 }
 
