@@ -79,8 +79,6 @@ document.getElementById('preregisterForm').addEventListener('submit', async func
         try {
             // Show loading state
             const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Submitting...';
             submitBtn.disabled = true;
             
             const response = await fetch(`${API_BASE_URL}/api/preregister`, {
@@ -106,7 +104,6 @@ document.getElementById('preregisterForm').addEventListener('submit', async func
             }
             
             // Reset button
-            submitBtn.textContent = originalText;
             submitBtn.disabled = false;
             
         } catch (error) {
