@@ -45,7 +45,11 @@ function validateEmail(email) {
     return emailRegex.test(email);
 }
 
-document.getElementById('preregisterForm').addEventListener('submit', function(e) {
+// Configuration - Update this URL to match your backend
+const API_BASE_URL = 'http://localhost:3000';
+
+// Updated preregister form handler
+document.getElementById('preregisterForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     
     const fullName = document.getElementById('fullName').value.trim();
@@ -53,10 +57,8 @@ document.getElementById('preregisterForm').addEventListener('submit', function(e
     
     let isValid = true;
     
-  
     clearErrors();
     
-  
     if (!fullName) {
         document.getElementById('fullNameError').textContent = 'Full name is required';
         isValid = false;
@@ -65,7 +67,6 @@ document.getElementById('preregisterForm').addEventListener('submit', function(e
         isValid = false;
     }
     
-  
     if (!email) {
         document.getElementById('emailError').textContent = 'Email is required';
         isValid = false;
@@ -75,9 +76,53 @@ document.getElementById('preregisterForm').addEventListener('submit', function(e
     }
     
     if (isValid) {
-      
-        alert('Thank you for pre-registering! We\'ll be in touch soon.');
-        closeModal();
+        try {
+            // Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+            
+            const response = await fetch(`${API_BASE_URL}/api/preregister`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ fullName, email })
+            });
+            
+            if (!response.ok) {
+                throw new Error(`Server error: ${response.status}`);
+            }
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                alert('Thank you for pre-registering! We\'ll be in touch soon. Check your email for confirmation.');
+                this.reset();
+                closeModal();
+            } else {
+                alert('Error: ' + result.message);
+            }
+            
+            // Reset button
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+            
+        } catch (error) {
+            console.error('Error:', error);
+            if (error.message.includes('Failed to fetch')) {
+               alert('Cannot connect to server.');
+               console.log(error);
+            } else {
+                alert('An error occurred. Please try again.');
+            }
+            
+            // Reset button
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.textContent = 'Submit';
+            submitBtn.disabled = false;
+        }
     }
 });
 
@@ -88,7 +133,7 @@ document.addEventListener('keydown', function(e) {
 });
 
 
-document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+document.getElementById('contactForm')?.addEventListener('submit', async function(e) {
     e.preventDefault();
     
     const fullName = document.getElementById('contactFullName').value.trim();
@@ -97,35 +142,119 @@ document.getElementById('contactForm')?.addEventListener('submit', function(e) {
     const message = document.getElementById('contactMessage').value.trim();
     
     if (!fullName || !email || !title || !message) {
-      console.log('Error: Nuh uh you cant do that')
-      return
+        console.log('Error: All fields are required');
+        alert('Please fill in all fields');
+        return;
     }
-
-    console.log('Desktop Contact Form Submitted:', { fullName, email, title, message });
     
-  
-    this.reset();
-    alert('Thank you for your message! We\'ll get back to you soon.');
+    try {
+        // Show loading state
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+        
+        const response = await fetch(`${API_BASE_URL}/api/contact`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ fullName, email, title, message })
+        });
+        
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.status}`);
+        }
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            alert('Thank you for your message! We\'ll get back to you soon. Check your email for confirmation.');
+            this.reset();
+        } else {
+            alert('Error: ' + result.message);
+        }
+        
+        // Reset button
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+        
+    } catch (error) {
+        console.error('Error:', error);
+        if (error.message.includes('Failed to fetch')) {
+            alert('Cannot connect to server. Make sure the backend is running on http://localhost:3000');
+        } else {
+            alert('An error occurred. Please try again.');
+        }
+        
+        // Reset button
+        const submitBtn = this.querySelector('button[type="submit"]');
+        submitBtn.textContent = 'Send Message';
+        submitBtn.disabled = false;
+    }
 });
 
-document.getElementById('contactFormMobile')?.addEventListener('submit', function(e) {
+// Updated contact form handler (mobile)
+document.getElementById('contactFormMobile')?.addEventListener('submit', async function(e) {
     e.preventDefault();
     
     const fullName = document.getElementById('contactFullNameMobile').value.trim();
     const email = document.getElementById('contactEmailMobile').value.trim();
     const title = document.getElementById('contactTitleMobile').value.trim();
     const message = document.getElementById('contactMessageMobile').value.trim();
-
+    
     if (!fullName || !email || !title || !message) {
-      console.log('Error: Nuh uh you cant do that')
-      return
+        console.log('Error: All fields are required');
+        alert('Please fill in all fields');
+        return;
     }
     
-  
-    console.log('Mobile Contact Form Submitted:', { fullName, email, title, message });
-    
-  
-    this.reset();
+    try {
+        // Show loading state
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+        
+        const response = await fetch(`${API_BASE_URL}/api/contact`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ fullName, email, title, message })
+        });
+        
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.status}`);
+        }
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            alert('Thank you for your message! We\'ll get back to you soon. Check your email for confirmation.');
+            this.reset();
+        } else {
+            alert('Error: ' + result.message);
+        }
+        
+        // Reset button
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+        
+    } catch (error) {
+        console.error('Error:', error);
+        if (error.message.includes('Failed to fetch')) {
+            alert('Cannot connect to server.');
+            console.log(error);
+        } else {
+            alert('An error occurred. Please try again.');
+        }
+        
+        // Reset button
+        const submitBtn = this.querySelector('button[type="submit"]');
+        submitBtn.textContent = 'Send Message';
+        submitBtn.disabled = false;
+    }
 });
 
 const observerOptions = {
