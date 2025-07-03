@@ -46,7 +46,7 @@ function validateEmail(email) {
 }
 
 // Configuration - Update this URL to match your backend
-const API_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL = 'https://gm-backend-1-57fz.onrender.com';
 
 // Updated preregister form handler
 document.getElementById('preregisterForm').addEventListener('submit', async function(e) {
